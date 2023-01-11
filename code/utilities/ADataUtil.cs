@@ -143,4 +143,11 @@ public static class ADataUtil
 
 		return false;
 	}
+
+	public static bool DataExists<T>() {
+		if (DataReg.TryGetValue(nameof(T), out string path) && FileSystem.Data.FileExists(path ?? "")) 
+			return true;
+
+		return false;
+	}
 }

@@ -21,6 +21,6 @@ public partial class AGame : GameManager
 		base.ClientJoined( client );
 
 		// Initialise the player
-		//var ply = new APlayer(client.SteamId);
+		var ply = new APlayer(ref client);
 	}
 }

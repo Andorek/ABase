@@ -29,5 +29,9 @@ public class AGlobalConfig
 
 	public bool AllowMultipleCharacters {get; set;} = true;
 	public int DefaultMaxCharacters {get; set;} = 3;
+	public int MaxPseudoNameLength {get; set;} = 14;
+	public List<string> BannedNames {get; set;} = new() {
+		
+	};
 
 }

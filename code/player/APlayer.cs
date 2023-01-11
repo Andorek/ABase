@@ -9,25 +9,27 @@ public partial class APlayer {
 	public AGlobalConfig config;
 
 	public APlayer() {
+		ADataUtil.GetData(out config);
 		// No id provided. Make a bot or something?
 	}
 
-	// charIndex allows you to choose which character the player should load up as. Useful if they have multiple characters from when AllowMultipleCharacters was true, but then changed to false.
-	public APlayer(IClient cl, int charIndex = 0) {
+	public APlayer(ref IClient cl) {
 		ADataUtil.GetData(out config);
 		var pawn = new APawn();
 
 		List<ACharacterInfo> playerInfo = new();
+		ACharacterInfo selectedChar = new();
 
 		if (ADataUtil.DataExists("PlayerInfo")) { // The player has joined before.
 			ADataUtil.GetData("PlayerInfo", cl.SteamId, out playerInfo);
-			if (!config.AllowMultipleCharacters) {
-				pawn.CharacterInfo = playerInfo[charIndex];
-			}
+			// Open a character selection window.
 		}
 		else { // The player has not joined before.
-
+			// Open a character creation window.
 		}
+
+		pawn.CharacterInfo.SetCharInfo(selectedChar);
+		cl.Pawn = pawn;
 	}
 
 }
