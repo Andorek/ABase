@@ -6,7 +6,7 @@ namespace ABase.Utilities;
 public static class ADataUtil
 {
 	// key should be the 'name' of the config, while the value should be the path.
-	private static Dictionary<string, string> DataReg;
+	public static Dictionary<string, string> DataReg;
 
 	public static void InitData() {
 		if (!FileSystem.Data.FileExists("DataReg.json")) {
@@ -108,12 +108,15 @@ public static class ADataUtil
 	}
 
 	public static void GetData<T>(out T data) {
-		string name = nameof(T);
-		if (!DataReg.ContainsKey(name)) {
+		string name = typeof(T).Name;
+		Log.Info(name);
+		/*if (!DataReg.ContainsKey(name)) {
+			Log.Info("Key not found.");
 			data = default;
 			return;
-		}
+		}*/
 
+		//Log.Info(DataReg[name]);
 		data = FileSystem.Data.ReadJson<T>(DataReg[name]);
 	}
 

@@ -72,21 +72,21 @@ public class ACommand
 		Commands[command].Action(args);
 	}
 
-	[ConCmd.Server]
 	public static bool CanUseCommand(string command, IClient client = null) {
-		if (client == null && ConsoleSystem.Caller == null) return false;
-		else if (client == null) client = ConsoleSystem.Caller;
-		
-		ADataUtil.GetData("AGroups", out Dictionary<string, APermissions> groups);
+		//client ??= ConsoleSystem.Caller;
+		//if (client == null) return false;
 
-		APawn pawn = client.Pawn as APawn;
-		var plyGroup = groups[pawn.CharacterInfo.Team];
-		if (plyGroup.UseBlacklist) {
-			return !plyGroup.CommandBlacklist.Contains(command);
+		//ADataUtil.GetData("AGroups", out Dictionary<string, APermissions> groups);
+
+		//APawn pawn = client.Pawn as APawn;
+		//var plyGroup = groups[pawn.CharacterInfo.Team];
+		/*if (plyGroup.UseBlacklist) {
+			//return !plyGroup.CommandBlacklist.Contains(command);
 		}
 		else {
-			return plyGroup.CommandWhitelist.Contains(command);
-		}
+			//return plyGroup.CommandWhitelist.Contains(command);
+		}*/
+		return true;
 	}
 
 	public static bool CanUseCommand(string command, long id) {

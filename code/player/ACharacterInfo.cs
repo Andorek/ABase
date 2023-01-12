@@ -4,11 +4,11 @@ namespace ABase.Player;
 
 public class ACharacterInfo
 {
-  AGlobalConfig config = new();
+  private AGlobalConfig config = new();
 
-  public string PseudoName {get; private set;}
-  public float Money {get; private set;} // Just for now. Implement a bank system?
-  public string Team {get; private set;}
+  public string PseudoName {get; private set;} = "Mike Oxenpayne";
+  public float Money {get; private set;} = 0; // Just for now. Implement a bank system?
+  public string Team {get; private set;} = "Citizen";
 
   public ACharacterInfo() {
     ADataUtil.GetData(out config);
@@ -21,6 +21,7 @@ public class ACharacterInfo
   }
 
   public void UpdatePsuedoName(string name) {
+	Log.Info(config.MaxPseudoNameLength);
     if (name.Length > config.MaxPseudoNameLength) return;
     foreach(string word in config.BannedNames) {
       if (name.Contains(word)) return;

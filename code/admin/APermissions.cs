@@ -6,7 +6,7 @@ namespace ABase.Admin;
 
 public class APermissions
 {
-	private static Dictionary<string, APermissions> groups {get; set;} = new() {
+	private static Dictionary<string, APermissions> Groups {get; set;} = new() {
 		["noperms"] = new() {
 			CommandWhitelist = new() {}
 		},
@@ -29,7 +29,7 @@ public class APermissions
 
 	public static void InitPerms() {
 		if (!ADataUtil.DataExists("AGroups"))
-			ADataUtil.WriteData("AGroups", groups);
+			ADataUtil.WriteData("AGroups", Groups);
 	}
 
 	public bool UseBlacklist {get; set;} = false;

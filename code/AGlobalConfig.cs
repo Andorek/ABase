@@ -33,5 +33,6 @@ public class AGlobalConfig
 	public List<string> BannedNames {get; set;} = new() {
 		
 	};
+	public string StartingTeam {get; set;} = "Citizen";
 
 }

@@ -20,7 +20,10 @@ public partial class AGame : GameManager
 	{
 		base.ClientJoined( client );
 
-		// Initialise the player
-		var ply = new APlayer(ref client);
+		if (Game.IsServer) {
+			// Initialise the player
+			var ply = new APlayer(ref client);
+		}
+		
 	}
 }
