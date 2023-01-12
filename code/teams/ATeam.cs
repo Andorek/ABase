@@ -7,7 +7,11 @@ public class ATeam
 {
 
     public static Dictionary<string, ATeam> TeamList {get; set;} = new() {
-        ["Citizen"] = new(),
+        ["Citizen"] = new() {
+			CustomAllowed = () => {
+				return true;
+			}
+		},
     };
 
     public ATeam() {
@@ -24,5 +28,8 @@ public class ATeam
         "user",
     };
 
-    //public delegate void CustomAllowed = 
+    public delegate bool CustomAllowedDel();
+
+	public CustomAllowedDel CustomAllowed {get; set;} = () => {return true;};
+
 }

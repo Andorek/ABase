@@ -28,9 +28,8 @@ public class APermissions
 	};
 
 	public static void InitPerms() {
-		APermissions perms = new();
-		if (!ADataUtil.DataExists("APermissions"))
-			ADataUtil.WriteData(perms);
+		if (!ADataUtil.DataExists("AGroups"))
+			ADataUtil.WriteData("AGroups", groups);
 	}
 
 	public bool UseBlacklist {get; set;} = false;
